@@ -1,4 +1,4 @@
-const CACHE='gymfit-shell-v1.0.1';
+const CACHE='gymfit-shell-v1.0.2';
 const SHELL=['./','./index.html','./admin.html','./trainer.html','./css/app.css','./js/runtime.js','./js/core.js','./js/icons.js','./js/member.js','./js/admin.js','./js/trainer.js','./js/vendor/socket.io.esm.min.js','./assets/logo.svg','./assets/icons/icon-192.png','./assets/icons/icon-512.png','./assets/fonts/manrope-latin.woff2','./assets/fonts/sora-latin.woff2',...['strength','classes','training','nutrition','facility'].map(n=>`./assets/default-heroes/${n}.webp`)];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('gymfit-shell-')&&key!==CACHE)await caches.delete(key);await self.clients.claim();})());});
