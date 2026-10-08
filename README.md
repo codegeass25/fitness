@@ -1,21 +1,23 @@
+> Updated individual-access release: see the backend docs/RELEASE-NOTES.md before applying affected files.
+
 # GYMFIT PRO 360 — GitHub Pages PWA
 
 Buildless HTML, CSS and ES modules. Deploy this folder's **contents** at the root of a GitHub Pages repository. Keep `assets`, `css`, `js`, the manifests and `service-worker.js` beside the HTML entry points.
 
 | Entry | Experience |
 | --- | --- |
-| `index.html` | Member: Home · Book · Workout · Progress · Profile |
+| `index.html` | Member: Home · Book Gym · Hire Trainer · My Workout · More |
 | `admin.html` | Management workspace |
-| `trainer.html` | Trainer schedule, assigned members, plans and notes |
+| `trainer.html` | Trainer: Today · Clients · Availability · Workout Plans · Progress · Notifications · Profile |
 
-Backend business settings supply identity, theme, masters, prices, available modules and operations. `js/runtime.js` contains only deployment API routing: loopback 3500 locally, `https://fitness.mdmsportal.uk` for hosted pages. Frontend code contains no database or integration credentials.
+Backend business settings supply identity, theme, masters, prices, available modules and operations. `js/runtime.js` contains only deployment API routing: `https://fitness.mdmsportal.uk` on every page, including local preview. Frontend code contains no database or integration credentials.
 
 ## Publish
 
 1. Upload these contents to a GitHub repository. Commit `.nojekyll` too.
 2. Enable Pages from the chosen branch's root. See [GitHub's official instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 3. Set the exact Pages origin in backend `.env` `CORS_ORIGINS`.
-4. Set both backend `.env` `FRONTEND_URL` and saved **Settings → Data & System → Frontend URL** to the complete site URL with its repository path/trailing slash.
+4. Set both backend `.env` `FRONTEND_URL` and saved **Settings → System → Frontend URL** to the complete site URL with its repository path/trailing slash.
 5. Run the backend in production and keep the existing remotely managed Cloudflare tunnel running. Production `/` on the API hostname is intentionally API-only; use the Pages site for the interface.
 
 Relative asset paths support GitHub repository subpaths. Run local preview through the backend rather than opening HTML as `file://`.
